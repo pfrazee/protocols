@@ -1,0 +1,111 @@
+# Discovery Protocol Spec
+
+This document describes a mechanism for reliably exporting/consuming hypermedia meta-data, and for interpreting the meta-data consistently in a distributed architecture. It is built on multiple existing specs, including:
+
+ - The Link header (RFC 5988)
+ - URI Templates (RFC 6570)
+
+This protocol makes no updates to those specs, and instead focuses on their combination and interpretation. In the LocalJS library, this spec is implemented with `local.web.navigator`, which may be used as a reference.
+
+
+## Definitions
+
+
+## Requirements
+
+**Resource Behaviors**
+
+- MUST implement the "HEAD" method
+- MUST include a "Link" header in all 2xx-range responses, formatted according to RFC 5988
+- SHOULD use the "id" Link attribute to identify resources to machines
+- SHOULD use the "title" Link attribute to identify resources to humans
+- SHOULD include a "self" relation to describe the current resource
+- MAY use URI Templates to condense Link entries
+
+**Protocol Label Behaviors** (the behavior of resources indicated by custom `rel` values, such as this document)
+
+- SHOULD provide text/html describing the protocol specification
+- SHOULD provide an `http://grimwire.com/rel/access/policy` link
+- MAY publish additional content types related to the protocol's use, including software and other description formats
+
+**`rel=service` Behaviors**
+
+Reserved (not yet specified)
+
+**`rel=collection` Behaviors**
+
+Reserved (not yet specified)
+
+**`rel=item` Behaviors**
+
+Reserved (not yet specified)
+
+
+## Comments
+
+**Hypermedia Discovery**
+
+RFC 5988 specifies the use of a Link header to consistently locate and serialize hypermedia within a response. The "HEAD" request can be used to fetch this header. RFC 6570 specifies a scheme of tokens for templating URIs. Link header URIs can use URI Templates to "parameterize" the relation. For instance, `</users/5>; rel="item"; id="5"` could be replaced with `</users/{id}>; rel="item"`, thereby reducing the number of links required to describe the available resources.
+
+The flow of discovery is as follows: a consumer describes a series of navigations according to attributes expected in Link headers. This description starts with an absolute URI. The client then issues a "HEAD" request to the starting URI, searches the exported hypermedia according to the consumer's description, selects a link, then "follows" the link by issuing another "HEAD" request and repeating the process. This process ends when the destination link is found.
+
+The following example should help visualize this process:
+
+<pre>
+  Consumer's Resource Description:
+    http://ahost.com
+    -&gt; rel="collection"; id="users"
+    -&gt; rel="item"; id="bob"
+    -&gt; rel="service"; id="mail"
+    -&gt; rel="collection"; id="messages"; filter="unread"
+
+  HTTP Traffic:
+    &gt; HEAD http://ahost.com
+    &lt; 200 ok
+    &lt; Link: &lt;/&gt;; rel="self service"; id="ahost"; title="A Host",
+            &lt;/users&gt;; rel="collection"; id="users"; title="Users Collection"
+
+    &gt; HEAD http://ahost.com/users
+    &lt; 200 ok
+    &lt; Link: &lt;/users/{id}&gt;; rel="item http://ahost.com/rel/user"; title="User Entry"
+
+    &gt; HEAD http://ahost.com/users/bob
+    &lt; 200 ok
+    &lt; Link: &lt;/users/bob/mail&gt;; rel="service"; id="mail"; title="Bob's Mailbox",
+            &lt;/users/bob/contacts&gt;; rel="service"; id="contacts"; title="Bob's Contacts"
+
+    &gt; HEAD http://ahost.com/users/bob/mail
+    &lt; 200 ok
+    &lt; Link: &lt;/users/bob/mail/messages{?filter}&gt;; rel="collection"; id="messages"; title="Bob's Messages"
+</pre>
+
+As illustrated, the "rel" and "id" attributes should be used primarily to identify resources to the consumer (by protocol and identifier, respectively) while additional attributes may be used to construct URIs (as in the case of "filter") or render the resources in UIs (as in the case of "title"). Note that the "rel" attribute can specify multiple space-separated values. Note also that the "rel" attribute's values must be one of the IANA standard keywords or a URL controlled by the creator/maintainer of the protocol (discussed below).
+
+To fetch a resource's meta-data directly, the client issues a "HEAD" request directly to the resource, then use the rel="self" link to describe the target.
+
+**Protocol Description**
+
+In this specification, the "rel" attribute is a protocol label, and each label implies any definitions published by the host of the protocol.
+
+In the case of non-standard "rel" values ("http://ahost.com/rel/user") the label is a URI which is controlled by the protocol creator/maintainer. That URI should serve information describing the protocol as well as tools to help developers implement the spec.
+
+Standard "rel" values ("collection," "item") would ideally use IETF-standardized protocols, but, at this time, applications following this spec should only follow "standard rel" protocols published in this document. If a "rel" value has no protocol defined, its consumers should not expect any non-standard behaviors.
+
+The following is an example specification for "http://foobar.com/rel/collection/paginated":
+
+<pre>
+  The resource MUST export a link with rel="http://foobar.com/rel/item" and an identifying "title" attribute.
+  The resource MUST implement the HEAD and GET methods.
+  The GET method MUST support pagination through the "offset" and "limit" query parameters.
+  The GET method MUST provide a content-schema which can be deserialized into the following schema:
+  {
+    items: required array of mixed (the collection contents),
+    meta: {
+      total: required number (total count of items without pagination applied)
+    }
+  }
+</pre>
+
+**Protocol Layering**
+
+If multiple "rel" attributes are used, the constraints implied are combined. If two protocols conflict, shouldn't be used in conjunction, as doing so can lead to compatibility issues and bugs.
