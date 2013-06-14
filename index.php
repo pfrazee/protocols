@@ -6,7 +6,6 @@ require('lib/Michelf/Markdown.php');
 require('lib/mime.php');
 use \Michelf\Markdown;
 
-
 $protocol = basename($_GET['id']);
 if ($protocol == '') $protocol = 'index';
 
@@ -21,7 +20,7 @@ if ($spec == FALSE) {
 }
 
 if ($links)
-   header('Link: ' . $links);
+   header('Link: ' . str_replace("\n", " ", $links));
 
 if ($type == 'text/html') {
   header('Content-type: text/html');

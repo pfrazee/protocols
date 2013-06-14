@@ -1,0 +1,5 @@
+<http://grimwire.com/rel>; rel="self collection"; id="rel"; title="Resource Relation Protocols",
+<http://grimwire.com/rel/discovery>; rel="item http://grimwire.com/rel/protocol"; id="discovery"; title="Hypermedia Discovery Protocol",
+<http://grimwire.com/rel/protocol>; rel="item http://grimwire.com/rel/protocol"; id="protocol"; title="Protocol Description Protocol",
+<http://grimwire.com/rel/proxy>; rel="item http://grimwire.com/rel/protocol"; id="proxy"; title="Proxy Protocol",
+<http://grimwire.com/rel/service>; rel="item http://grimwire.com/rel/protocol"; id="service"; title="Service Protocol"
