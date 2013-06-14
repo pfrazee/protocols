@@ -6,13 +6,10 @@ require('lib/Michelf/Markdown.php');
 require('lib/mime.php');
 use \Michelf\Markdown;
 
-$protocol = basename($_GET['id']);
-if ($protocol == '') $protocol = 'index';
-
 $type = getBestSupportedMimeType(array('text/html','text/plain'));
-$links = @file_get_contents('_'.$protocol.'.links');
+$links = @file_get_contents('./links');
 
-$spec = @file_get_contents('_'.$protocol.'.md');
+$spec = @file_get_contents('./md');
 if ($spec == FALSE) {
   header("HTTP/1.1 404 not found");
   echo "not found";
