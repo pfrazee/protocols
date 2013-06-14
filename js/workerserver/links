@@ -1,0 +1,3 @@
+<http://grimwire.com/>; rel="via service"; id="grimwire"; title="Grimwire.com",
+<http://grimwire.com/rel/js>; rel="up collection"; id="js"; title="JS Hosting Protocols",
+<http://grimwire.com/rel/js/workerserver>; rel="self item http://grimwire.com/rel/protocol"; id="workerserver"; title="WorkerServer Hosting Protocol"

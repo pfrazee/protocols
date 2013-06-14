@@ -109,3 +109,7 @@ The following is an example specification for "http://foobar.com/rel/collection/
 **Protocol Layering**
 
 If multiple "rel" attributes are used, the constraints implied are combined. If two protocols conflict, shouldn't be used in conjunction, as doing so can lead to compatibility issues and bugs.
+
+**Todo**
+
+ - Rules for deciding URI equivalence (direct match? is `http://a.com/b` the same as `a.com/b` the same as `a.com/b/`?)

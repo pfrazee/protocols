@@ -1,23 +1,15 @@
-# Grimwire Protocols
-
-Core
+# Grimwire Core Protocols
 
 - [discovery](discovery)
 - [proxy](proxy)
 - [service](service)
 - [protocol](protocol)
-
-Signaling
-
-- signal/webrtc
-- signal/peers
-
-Access Control
-
-- access/policy
-- access/select
-- access/request
-
-JS Hosting
-
- - js/workerserver
+- **[Signaling](signal)**
+ - [signal/webrtc](signal/webrtc)
+ - [signal/peers](signal/peers)
+- **[Access Control](access)**
+ - [access/policy](access/policy)
+ - [access/select](access/select)
+ - [access/request](access/request)
+- **[JS Hosting](js)**
+ - [js/workerserver](js/workerserver)

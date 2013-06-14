@@ -1,2 +1,3 @@
 <http://grimwire.com/rel/proxy>; rel="self item http://grimwire.com/rel/protocol"; id="proxy"; title="Proxy Protocol",
-<http://grimwire.com/rel>; rel="up collection"; id="rel"; title="Resource Relation Protocols"
+<http://grimwire.com/rel>; rel="up collection"; id="rel"; title="Resource Relation Protocols",
+<http://grimwire.com/>; rel="via service"; id="grimwire"; title="Grimwire.com"

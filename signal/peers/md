@@ -1,0 +1,17 @@
+# Peers Signal Protocol Spec
+
+Defines a "peers signaling" resource for communicating between peers (Tabs, WebRTC peers, WorkerServers, etc) in a Grimwire browser session.
+
+*This spec is not yet defined.*
+
+
+## Definitions
+
+
+
+## Requirements
+
+
+
+## Comments
+
