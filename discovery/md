@@ -13,7 +13,7 @@ This protocol makes no updates to those specs, and instead focuses on their comb
 
 ## Requirements
 
-**Resource Behaviors**
+**All Resource Behaviors**
 
 - MUST implement the "HEAD" method
 - MUST include a "Link" header in all 2xx-range responses, formatted according to RFC 5988
@@ -22,23 +22,24 @@ This protocol makes no updates to those specs, and instead focuses on their comb
 - SHOULD include a "self" relation to describe the current resource
 - MAY use URI Templates to condense Link entries
 
-**Protocol Label Behaviors** (the behavior of resources indicated by custom `rel` values, such as this document)
 
-- SHOULD provide text/html describing the protocol specification
-- SHOULD provide an `http://grimwire.com/rel/access/policy` link
-- MAY publish additional content types related to the protocol's use, including software and other description formats
+**`rel=service` Resource Behaviors**
 
-**`rel=service` Behaviors**
+- MUST provide one link entry with the `self` protocol, as well as any other protocols and attributes which apply to the resource.
 
-Reserved (not yet specified)
 
-**`rel=collection` Behaviors**
+**`rel=collection` Resource Behaviors**
 
-Reserved (not yet specified)
+- MUST provide one link entry with the `self` protocol, as well as any other protocols and attributes which apply to the resource.
+- MUST provide at least one link entry with the `item` protocol.
+- SHOULD provide at least one link entry with the `via` and `service` protocols.
 
-**`rel=item` Behaviors**
 
-Reserved (not yet specified)
+**`rel=item` Resource Behaviors**
+
+- MUST provide one link entry with the `self` protocol, as well as any other protocols and attributes which apply to the resource.
+- MUST provide at least one link entry with the `up` and `collection` protocols.
+- SHOULD provide at least one link entry with the `via` and `service` protocols.
 
 
 ## Comments
