@@ -2,5 +2,5 @@
 
 [up](..)
 
-- [webrtc](webrtc)
-- [peers](peers)
+- [webrtc](webrtc) Resources which communicate between potential WebRTC peers.
+- [peers](peers) Resources which communicate between peers in a session.
