@@ -1,0 +1,3 @@
+<http://grimwire.com/rel/interface>; rel="self item http://grimwire.com/rel/protocol"; id="interface"; title="Interface Protocol",
+<http://grimwire.com/rel>; rel="up collection"; id="rel"; title="Resource Relation Protocols",
+<http://grimwire.com/>; rel="via service"; id="grimwire"; title="Grimwire.com"

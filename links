@@ -1,9 +1,10 @@
 <http://grimwire.com/>; rel="via up service"; id="grimwire"; title="Grimwire.com",
 <http://grimwire.com/rel>; rel="self collection"; id="rel"; title="Core Protocols",
 <http://grimwire.com/rel/signal>; rel="collection"; id="signal"; title="Signal Protocols",
-<http://grimwire.com/rel/access>; rel="collection"; id="access"; title="Access Control Protocols",
 <http://grimwire.com/rel/js>; rel="collection"; id="js"; title="Javascript Hosting Protocols",
 <http://grimwire.com/rel/discovery>; rel="item http://grimwire.com/rel/protocol"; id="discovery"; title="Hypermedia Discovery Protocol",
 <http://grimwire.com/rel/protocol>; rel="item http://grimwire.com/rel/protocol"; id="protocol"; title="Protocol Description Protocol",
+<http://grimwire.com/rel/interface>; rel="item http://grimwire.com/rel/protocol"; id="interface"; title="Interface Protocol",
 <http://grimwire.com/rel/proxy>; rel="item http://grimwire.com/rel/protocol"; id="proxy"; title="Proxy Protocol",
-<http://grimwire.com/rel/service>; rel="item http://grimwire.com/rel/protocol"; id="service"; title="Service Protocol"
+<http://grimwire.com/rel/service>; rel="item http://grimwire.com/rel/protocol"; id="service"; title="Service Protocol",
+<http://grimwire.com/rel/semver>; rel="item http://grimwire.com/rel/protocol"; id="semver"; title="Semantic Versioning Protocol"

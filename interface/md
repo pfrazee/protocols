@@ -1,0 +1,40 @@
+# Interface Protocol Spec
+
+Defines an "interface" resource which describes available interactions with a service using HTML and HAP.
+
+
+## Definitions
+
+### text/hap (Hypermedia Access Policies)
+
+Overview: A set of 2-tuples containing regex values which indicate allowed requests. The first tuple value matches allowed methods; the second value matches allowed path's on the target service. A request must meet the following criteria to be permitted:
+
+- The request host must match the HAP host's domain.
+- The request method must match one of the tuple's first regexes.
+- The request path must match the same tuple's second regex.
+
+Format/Syntax: The document separates each tuple by a newline, and each value in the tuple by a space. The regex values are parsed by feeding them into the Javascript `RegExp` constructor as strings, and so should follow similar formatting. Lines are commented out if they start with pound signs ('#').
+
+<pre>
+# HAP for Grimwire.com user program
+# Policy: Full CRUD
+HEAD|GET|POST /users
+HEAD|GET|PATCH|DELETE /users/[0-9]*
+</pre>
+
+
+## Requirements
+
+### Resource Behavior
+
+- MUST provide a text/html content-type which includes form controls for all possible interactions
+- MUST provide a text/hap content-type which includes entries for all allowed interactions once an interface is shared
+- SHOULD provide links to resources to be shared with the interface
+
+
+## Comments
+
+Interface resources are the main mechanism for controlling sharing and permissioning in Grimwire. Their HTML documents are loaded into Grimshell, where they provide low-level controls and give the user a clear understanding of what can be done with the interface. Grimshell users then share the interface with peers, which will:
+
+- Send to the share target all links exported by the interface resource
+- Enable messages to proxy according to the rules provided in the interface resource's HAP

@@ -1,3 +1,0 @@
-<http://grimwire.com/>; rel="via service"; id="grimwire"; title="Grimwire.com",
-<http://grimwire.com/rel/access>; rel="up collection"; id="access"; title="Access Control Protocols",
-<http://grimwire.com/rel/access/select>; rel="self item http://grimwire.com/rel/protocol"; id="select"; title="Access Selection Protocol"
