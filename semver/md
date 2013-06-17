@@ -1,0 +1,35 @@
+# Semantic Versioning Protocol Spec
+
+Defines behaviors for resources with multiple versions.
+
+
+## Definitions
+
+Follows link relation definitions of RFC5829. Follows version-labeling definitions of [semver.org](http://semver.org).
+
+
+## Requirements
+
+### `rel=http://grimwire.com/rel/semver` Link Behaviors
+
+When linking to semantically-versioned resources:
+
+- MUST include the `latest-version` rel value if applicable
+- SHOULD include the `predecessor-version` rel value if applicable
+- SHOULD include the `successor-version` rel value if applicable
+
+### `rel=http://grimwire.com/rel/semver` Resource Behaviors
+
+- MUST provide `alternate` links (if applicable) which:
+ - MUST include the `v` attribute with the semver value
+- MAY provide a `version-history` link
+
+
+## Comments
+
+An example header:
+
+<pre>
+Link: &lt;http://grimwire.com/rel/semver&gt;; rel="self item latest-version http://grimwire.com/rel/protocol"; id="semver"; title="Semantic Versioning Protocol"; v="0.0.2",
+&lt;http://grimwire.com/rel/semver/v0.0.1&gt;; rel="alternate predecessor-version"; id="semver"; title="Semantic Versioning Protocol"; v="0.0.1"
+</pre>
