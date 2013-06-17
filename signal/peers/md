@@ -12,31 +12,33 @@ This spec is implemented by the Peer Server in Grimwire's Shell.
 
 ## Requirements
 
-**Collection Resource Behaviors**
+### `rel=http://grimwire.com/rel/signal/peers` Resource Behaviors
 
 - MUST behave as a `collection`.
 - MUST provide a text/event-stream.
  - SHOULD emit the 'join' event when a new peer enters the session.
  - SHOULD emit the 'part' event when a peer leaves the session.
 
-**Item Resource Behaviors**
+### `rel=http://grimwire.com/rel/signal/peers >> rel=item` Resource Behaviors
+
+The resources linked with the `item` protocol from a `http://grimwire.com/rel/signal/peers` resource:
 
 - MUST behave as an `item`.
 - MUST provide a text/event-stream.
  - SHOULD emit the 'share' event when another peer selects a resource for them.
-- SHOULD implement the "SHARE" to:
+- SHOULD implement the "SHARE" method to:
  - respond 422 if the request body, once deserialized, does not include the following object attributes:
 <pre>
 {
-&nbsp;&nbsp;href: string, the URI of the resource to be shared
+href: string, the URI of the resource to be shared
 }
 </pre>
  - emit the 'share' event under normal circumstances
  - include the following attributes in the event data:
 <pre>
 {
-&nbsp;&nbsp;received: string, the serialized time the share was received (Javascript Date string format)
-&nbsp;&nbsp;message: object, the request body
+  received: string, the serialized time the share was received (Javascript Date string format)
+  message: object, the request body
 }
 </pre>
 

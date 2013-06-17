@@ -13,7 +13,7 @@ This protocol makes no updates to those specs, and instead focuses on their comb
 
 ## Requirements
 
-**All Resource Behaviors**
+### All Resource Behaviors
 
 - MUST implement the "HEAD" method
 - MUST include a "Link" header in all 2xx-range responses, formatted according to RFC 5988
@@ -22,20 +22,17 @@ This protocol makes no updates to those specs, and instead focuses on their comb
 - SHOULD include a "self" relation to describe the current resource
 - MAY use URI Templates to condense Link entries
 
-
-**`rel=service` Resource Behaviors**
+### `rel=service` Resource Behaviors
 
 - MUST provide one link entry with the `self` protocol, as well as any other protocols and attributes which apply to the resource.
 
-
-**`rel=collection` Resource Behaviors**
+### `rel=collection` Resource Behaviors
 
 - MUST provide one link entry with the `self` protocol, as well as any other protocols and attributes which apply to the resource.
 - MUST provide at least one link entry with the `item` protocol.
 - SHOULD provide at least one link entry with the `via` and `service` protocols.
 
-
-**`rel=item` Resource Behaviors**
+### `rel=item` Resource Behaviors
 
 - MUST provide one link entry with the `self` protocol, as well as any other protocols and attributes which apply to the resource.
 - MUST provide at least one link entry with the `up` and `collection` protocols.
@@ -44,7 +41,7 @@ This protocol makes no updates to those specs, and instead focuses on their comb
 
 ## Comments
 
-**Hypermedia Discovery**
+### Hypermedia Discovery
 
 RFC 5988 specifies the use of a Link header to consistently locate and serialize hypermedia within a response. The "HEAD" request can be used to fetch this header. RFC 6570 specifies a scheme of tokens for templating URIs. Link header URIs can use URI Templates to "parameterize" the relation. For instance, `</users/5>; rel="item"; id="5"` could be replaced with `</users/{id}>; rel="item"`, thereby reducing the number of links required to describe the available resources.
 
@@ -84,7 +81,7 @@ As illustrated, the "rel" and "id" attributes should be used primarily to identi
 
 To fetch a resource's meta-data directly, the client issues a "HEAD" request directly to the resource, then use the rel="self" link to describe the target.
 
-**Protocol Description**
+### Protocol Description
 
 In this specification, the "rel" attribute is a protocol label, and each label implies any definitions published by the host of the protocol.
 
@@ -107,10 +104,10 @@ The following is an example specification for "http://foobar.com/rel/collection/
   }
 </pre>
 
-**Protocol Layering**
+### Protocol Layering
 
 If multiple "rel" attributes are used, the constraints implied are combined. If two protocols conflict, shouldn't be used in conjunction, as doing so can lead to compatibility issues and bugs.
 
-**Todo**
+### Todo
 
  - Rules for deciding URI equivalence (direct match? is `http://a.com/b` the same as `a.com/b` the same as `a.com/b/`?)

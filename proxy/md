@@ -12,7 +12,7 @@ Defines a "proxy" resource which can be commanded to issue subsequent requests u
 
 ## Requirements
 
-**Behaviors**
+### Resource Behaviors
 
 If the In request includes a path:
 
@@ -25,7 +25,7 @@ If the In request does not include a path:
 
 - SHOULD populate In's response with information related to the proxy resource
 
-**Definitions**
+### Definitions
 
 - MUST define the Intended Subseq request URL as: the path of the In request
 - MUST define all other parameters of the Intended Subseq as: the parameters of the In request

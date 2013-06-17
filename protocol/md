@@ -8,14 +8,10 @@ Defines a "protocol" resource which describes resource behaviors and provides re
 
 ## Requirements
 
-**Behaviors**
+### Resource Behaviors
 
 - SHOULD provide a text/html description of the constraints in the protocol
-- SHOULD provide a `http://grimwire.com/rel/access/policy` link
+- MAY behave as a `http://grimwire.com/rel/semver`
 
 
 ## Comments
-
-**Todo**
-
- - A versioning standard
