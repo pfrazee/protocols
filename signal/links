@@ -1,5 +1,0 @@
-<http://grimwire.com/>; rel="via service"; id="grimwire"; title="Grimwire.com",
-<http://grimwire.com/rel>; rel="up collection"; id="rel"; title="Core Protocols",
-<http://grimwire.com/rel/signal>; rel="self collection"; id="signal"; title="Signal Protocols",
-<http://grimwire.com/rel/signal/webrtc>; rel="item http://grimwire.com/rel/protocol"; id="webrtc"; title="WebRTC Signaling Protocol",
-<http://grimwire.com/rel/signal/peers>; rel="item http://grimwire.com/rel/protocol"; id="peers"; title="Peer Signaling Protocol"

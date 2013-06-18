@@ -2,4 +2,4 @@
 
 [up](..)
 
-- [workerserver](workerserver) Resources which provide Worker Servers when asked for application/json
+- [workerserver](workerserver) Resources which provide Worker Server javascripts.

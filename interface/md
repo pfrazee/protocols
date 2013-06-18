@@ -18,8 +18,8 @@ Format/Syntax: The document separates each tuple by a newline, and each value in
 <pre>
 # HAP for Grimwire.com user program
 # Policy: Full CRUD
-HEAD|GET|POST /users
-HEAD|GET|PATCH|DELETE /users/[0-9]*
+^HEAD|GET|POST$ ^/users$
+^HEAD|GET|PATCH|DELETE$ ^/users/[0-9]*$
 </pre>
 
 
@@ -38,3 +38,5 @@ Interface resources are the main mechanism for controlling sharing and permissio
 
 - Send to the share target all links exported by the interface resource
 - Enable messages to proxy according to the rules provided in the interface resource's HAP
+
+Interfaces may be generated dynamically to create different access levels. For instance, an interface for a collection may include a filter field. The controlling user could filter, then share that constrained interface to only allow access to the visible resources.

@@ -1,0 +1,26 @@
+# Event Relay Protocol Spec
+
+Defines a resource for relaying messages between listeners.
+
+
+## Definitions
+
+
+## Requirements
+
+### `rel=http://grimwire.com/rel/sse/relay` Resource Behaviors
+
+- MUST implement the 'NOTIFY' method to:
+ - broadcast an event which MUST be defined as:
+ <pre>
+ event: &lt;NOTIFY sender id&gt;
+ data: &lt;NOTIFY request body&gt;
+ </pre>
+ - broadcast the event to all users other than the 'NOTIFY' sender
+- MUST provide a text/event-stream which:
+ - MUST play back message history when the 'Last-Event-Id' header is present
+
+
+## Comments
+
+This spec was originally created for a WebRTC signaling resource. The relay resource should provide additional tools for verifying sender ids, controlling who can listen, etc, as applicable.
