@@ -28,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'HEAD')
 
 if ($type == 'text/html') {
   header('Content-type: text/html');
+  echo '<base href="http://grimwire.com/rel/">';
   echo Markdown::defaultTransform($spec);
 }
 else if ($type == 'text/plain') {

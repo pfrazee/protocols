@@ -1,5 +1,5 @@
 # Grimwire Server-Sent Event Protocols
 
-[up](..)
+[up](/rel)
 
 - [relay](/rel/sse/relay) Resources which rebroadcast events to listeners.

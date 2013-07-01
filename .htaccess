@@ -1,3 +1,8 @@
 DirectorySlash Off
-RewriteEngine on
-RewriteRule ^(.*)$ index.php [L]
+
+# The following is in the apache config:
+#Alias /relindex.php /var/www/rel/index.php
+#<Location /rel>
+#    SetHandler phpindex
+#    Action phpindex /relindex.php
+#</Location>
