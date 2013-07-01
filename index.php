@@ -6,10 +6,14 @@ require('lib/Michelf/Markdown.php');
 require('lib/mime.php');
 use \Michelf\Markdown;
 
-$type = getBestSupportedMimeType(array('text/html','text/plain'));
-$links = @file_get_contents('./links');
+$path = rtrim($_SERVER[REQUEST_URI], '/');
+$path = substr($path, 5);
+if (!$path) $path = '.';
 
-$spec = @file_get_contents('./md');
+$type = getBestSupportedMimeType(array('text/html','text/plain'));
+$links = @file_get_contents($path.'/links');
+
+$spec = @file_get_contents($path.'/md');
 if ($spec == FALSE) {
   header("HTTP/1.1 404 not found");
   echo "not found";
@@ -18,6 +22,9 @@ if ($spec == FALSE) {
 
 if ($links)
    header('Link: ' . str_replace("\n", " ", $links));
+
+if ($_SERVER['REQUEST_METHOD'] == 'HEAD')
+   die;
 
 if ($type == 'text/html') {
   header('Content-type: text/html');

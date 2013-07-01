@@ -10,6 +10,9 @@ Defines a resource for relaying messages between listeners.
 
 ### `rel=http://grimwire.com/rel/sse/relay` Resource Behaviors
 
+- MUST implement the 'GET' method for Accept=text/event-stream which:
+ - MUST play back message history when the 'Last-Event-Id' header is present
+ - MUST play back all available history when 'Last-Event-Id' header is set to -1
 - MUST implement the 'NOTIFY' method to:
  - broadcast an event which MUST be defined as:
  <pre>
@@ -17,8 +20,6 @@ Defines a resource for relaying messages between listeners.
  data: &lt;NOTIFY request body&gt;
  </pre>
  - broadcast the event to all users other than the 'NOTIFY' sender
-- MUST provide a text/event-stream which:
- - MUST play back message history when the 'Last-Event-Id' header is present
 
 
 ## Comments

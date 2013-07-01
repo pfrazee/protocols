@@ -2,4 +2,4 @@
 
 [up](..)
 
-- [relay](relay) Resources which rebroadcast events to listeners.
+- [relay](/rel/sse/relay) Resources which rebroadcast events to listeners.

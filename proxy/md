@@ -17,9 +17,10 @@ Defines a "proxy" resource which can be commanded to issue subsequent requests u
 If the In request includes a path:
 
 - SHOULD issue a new request (the Subseq) based on the In request, then respond to the In with content based on the Subseq response
+- SHOULD only populate In's response with information related to the Subseq request
 - MUST append a self-describing entry to the Subseq request's Via header
 - MUST append a self-describing entry to the In response's Via header
-- MUST only populate In's response with information related to the Subseq request
+- MUST update the response's Link header entries to include the proxy
 
 If the In request does not include a path:
 

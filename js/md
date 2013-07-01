@@ -2,4 +2,4 @@
 
 [up](..)
 
-- [workerserver](workerserver) Resources which provide Worker Server javascripts.
+- [workerserver](/rel/js/workerserver) Resources which provide Worker Server javascripts.
